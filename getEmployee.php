@@ -1,6 +1,6 @@
 <?php
-require("BDconnect.php");
 try {
+    require("BDconnect.php");
     $sql = "SELECT * FROM employees";
     $result = $conn->query($sql);
 
