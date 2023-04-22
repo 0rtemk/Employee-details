@@ -29,8 +29,8 @@ function addEmployee() {
     request.send(params);
 }
 
-function updatePopup(Id) {
-    document.getElementById("update-popup").classList.toggle("d-none")
+function Update(Id) {
+    updatePopup()
 
     const request = new XMLHttpRequest();
     request.onreadystatechange = function() {
@@ -66,8 +66,33 @@ function updateEmployee(Id) {
     request.send(params);
 }
 
+function deleteEmployee(Id){
+    const request = new XMLHttpRequest();
+    request.open("DELETE", "deleteEmployee.php", true);
+    request.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            getEmployee()
+        }
+    };
+
+    request.send("ID=" + Id);
+}
+
 window.onload = getEmployee()
 
 function addPopup() {
     document.getElementById("add-popup").classList.toggle("d-none")
+}
+
+function updatePopup() {
+    document.getElementById("update-popup").classList.toggle("d-none")
+}
+
+function Delete(Id) {
+    deletePopup()
+    document.getElementById('DeleteButton').value = Id
+}
+
+function deletePopup() {
+    document.getElementById("delete-popup").classList.toggle("d-none")
 }

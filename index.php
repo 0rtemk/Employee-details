@@ -72,6 +72,16 @@
             <button class="btn-add" onclick="updateEmployee(this.value), updatePopup()" id="UpdateButton" value="">Сохранить</button>
         </div>
     </div>
+
+    <div class="add-popup d-none" id="delete-popup">
+        <div class="delete-popup-content">
+            <div class="employee-h2">Вы точно хотите удалить этот элемент?</div>
+            <div class="pad">
+            <button class="btn-delete" onclick="deleteEmployee(this.value), deletePopup()" id="DeleteButton" value="">Удалить</button>
+            <button class="btn-leave" onclick="deletePopup()">Отмена</button>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

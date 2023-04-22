@@ -18,7 +18,8 @@ try {
         echo "<td> {$row['Department']} </td>";
         echo "<td> {$row['Phone']} </td>";
         echo "<td>
-                <button class='btn-update' value={$row['ID']} onclick = 'updatePopup(this.value)'>Update</button>
+                <button class='btn-update' value={$row['ID']} onclick = 'Update(this.value)'>Update</button>
+                <button class='btn-delete' value={$row['ID']} onclick = 'Delete(this.value)'>Delete</button>
             </td>";
         echo "</tr>";
     }
