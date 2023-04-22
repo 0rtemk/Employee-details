@@ -17,7 +17,9 @@ try {
         echo "<td> {$row['Name']} </td>";
         echo "<td> {$row['Department']} </td>";
         echo "<td> {$row['Phone']} </td>";
-        echo "<td> ... </td>";
+        echo "<td>
+                <button class='btn-update' value={$row['ID']} onclick = 'updatePopup(this.value)'>Update</button>
+            </td>";
         echo "</tr>";
     }
 
@@ -25,3 +27,5 @@ try {
 } catch (Exception $e) {
     echo "<script>console.log({$e->getMessage()})</script>";
 }
+
+?>

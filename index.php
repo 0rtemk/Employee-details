@@ -45,6 +45,33 @@
             <button class="btn-add" onclick="addEmployee(), addPopup()">Сохранить</button>
         </div>
     </div>
+
+    <div class="add-popup d-none" id="update-popup">
+        <div class="add-popup-content">
+            <div class="row-add">
+                <div class="employee-h">Редактировать пользователя</div>
+                <button class="btn-exit" onclick="updatePopup()">Х</button>
+            </div>
+            <div class="text-field">
+                <div class="text-field__block">
+                    <label class="text-field__label" for="UpdateName">Name</label>
+                    <input class="text-field__input" type="text" id="UpdateName" name="UpdateName" 
+                    value=""></input>
+                </div>
+                <div class="text-field__block">
+                    <label class="text-field__label" for="UpdateName">Department</label>
+                    <input class="text-field__input" type="text" id="UpdateDepartment" name="UpdateDepartment" 
+                    value=""></input>
+                </div>
+                <div class="text-field__block">
+                    <label class="text-field__label" for="UpdatePhone">Phone</label>
+                    <input class="text-field__input" type="text" id="UpdatePhone" name="UpdatePhone" 
+                    value=""></input>
+                </div>
+            </div>
+            <button class="btn-add" onclick="updateEmployee(this.value), updatePopup()" id="UpdateButton" value="">Сохранить</button>
+        </div>
+    </div>
 </body>
 
 </html>

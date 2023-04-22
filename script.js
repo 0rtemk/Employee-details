@@ -29,6 +29,43 @@ function addEmployee() {
     request.send(params);
 }
 
+function updatePopup(Id) {
+    document.getElementById("update-popup").classList.toggle("d-none")
+
+    const request = new XMLHttpRequest();
+    request.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            const res = this.responseText.split(",")
+
+            document.getElementById("UpdateButton").value = res[0]
+            document.getElementById("UpdateName").value = res[1]
+            document.getElementById("UpdateDepartment").value = res[2]
+            document.getElementById("UpdatePhone").value = res[3]
+        }
+    };
+    request.open("GET", "updateEmployee.php?ID=" + Id);
+    request.send();
+}
+
+function updateEmployee(Id) {
+    const Name = document.getElementById("UpdateName").value
+    const Department = document.getElementById("UpdateDepartment").value
+    const Phone = document.getElementById("UpdatePhone").value
+
+    const params = `ID=${Id}&Name=${Name}&Department=${Department}&Phone=${Phone}`
+    
+    const request = new XMLHttpRequest();
+    request.open("PUT", "updateEmployee.php", true);
+    
+    request.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            getEmployee()
+        }
+    };
+    
+    request.send(params);
+}
+
 window.onload = getEmployee()
 
 function addPopup() {
