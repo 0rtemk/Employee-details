@@ -1,3 +1,16 @@
+let widgetId1;
+let widgetId2;
+
+function onloadCallback(){
+	const key = '6Ldc5a4lAAAAALuScAYwmFP0gA1GWErZyp0hoEEG';
+	widgetId1 = grecaptcha.render('recaptcha-1', {
+		'sitekey': key
+	});
+	widgetId2 = grecaptcha.render('recaptcha-2', {
+		'sitekey': key
+	});
+};
+
 function getEmployee() {
     const request = new XMLHttpRequest();
     request.onreadystatechange = function() {
@@ -91,12 +104,36 @@ function Delete(Id) {
 
 function addSubmit(event) {
     event.preventDefault()
-    addEmployee()
-    displayPopup('add-popup')
+
+    const response = grecaptcha.getResponse(widgetId1);
+    const addRecapchError = document.getElementById('add-recapch-error')
+
+	if (response.length == 0) {
+        addRecapchError.innerHTML = 'Вы не прошли проверку CAPTCHA, вы робот?'
+		return false;
+	} else {
+        addRecapchError.innerHTML = ''
+        grecaptcha.reset(widgetId1);
+
+        addEmployee()
+        displayPopup('add-popup')
+    }
 }
 
 function updateSubmit(event) {
     event.preventDefault()
-    updateEmployee(document.getElementById('UpdateButton').value)
-    displayPopup('update-popup')
+
+    const response = grecaptcha.getResponse(widgetId2);
+    const updateRecapchError = document.getElementById('update-recapch-error')
+
+	if (response.length == 0) {
+        updateRecapchError.innerHTML = 'Вы не прошли проверку CAPTCHA, вы робот?'
+		return false;
+	} else {
+        updateRecapchError.innerHTML = ''
+        grecaptcha.reset(widgetId2);
+        
+        updateEmployee(document.getElementById('UpdateButton').value)
+        displayPopup('update-popup')
+    }
 }

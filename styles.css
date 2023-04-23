@@ -221,3 +221,8 @@
 .pad {
     padding: 20px 0 20px 0;
 }
+
+.text-error {
+    color: rgb(255, 0, 0);
+    font-size: 12px;
+}

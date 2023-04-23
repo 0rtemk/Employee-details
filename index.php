@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <script src="script.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"></script>
     <title>Employee details</title>
 </head>
 
@@ -49,6 +50,8 @@
                         </input>
                     </div>
                 </div>
+                <div class="g-recaptcha" id="recaptcha-1"></div>
+                <div class="text-error" id="add-recapch-error"></div>
                 <button type="submit" class="btn-add">Сохранить</button>
             </form>
         </div>
@@ -84,6 +87,8 @@
                         </input>
                     </div>
                 </div>
+                <div class="g-recaptcha" id="recaptcha-2"></div>
+                <div class="text-error" id="update-recapch-error"></div>
                 <button type="submit" class="btn-add" id="UpdateButton" value="">Сохранить</button>
             </form>
         </div>
