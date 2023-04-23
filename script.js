@@ -14,7 +14,7 @@ function addEmployee() {
     const Department = document.getElementById("Department").value
     const Phone = document.getElementById("Phone").value
 
-    const params = `Name=${Name}&Department=${Department}&Phone=${Phone}`
+    const params = `Name=${Name}&Department=${Department}&Phone=${encodeURIComponent(Phone)}`
     
     const request = new XMLHttpRequest();
     request.open("POST", "addEmployee.php", true);
@@ -30,7 +30,7 @@ function addEmployee() {
 }
 
 function Update(Id) {
-    updatePopup()
+    displayPopup('update-popup')
 
     const request = new XMLHttpRequest();
     request.onreadystatechange = function() {
@@ -52,7 +52,7 @@ function updateEmployee(Id) {
     const Department = document.getElementById("UpdateDepartment").value
     const Phone = document.getElementById("UpdatePhone").value
 
-    const params = `ID=${Id}&Name=${Name}&Department=${Department}&Phone=${Phone}`
+    const params = `ID=${Id}&Name=${Name}&Department=${Department}&Phone=${encodeURIComponent(Phone)}`
     
     const request = new XMLHttpRequest();
     request.open("PUT", "updateEmployee.php", true);
@@ -80,19 +80,23 @@ function deleteEmployee(Id){
 
 window.onload = getEmployee()
 
-function addPopup() {
-    document.getElementById("add-popup").classList.toggle("d-none")
-}
-
-function updatePopup() {
-    document.getElementById("update-popup").classList.toggle("d-none")
+function displayPopup(elemId) {
+    document.getElementById(elemId).classList.toggle("d-none")
 }
 
 function Delete(Id) {
-    deletePopup()
+    displayPopup('delete-popup')
     document.getElementById('DeleteButton').value = Id
 }
 
-function deletePopup() {
-    document.getElementById("delete-popup").classList.toggle("d-none")
+function addSubmit(event) {
+    event.preventDefault()
+    addEmployee()
+    displayPopup('add-popup')
+}
+
+function updateSubmit(event) {
+    event.preventDefault()
+    updateEmployee(document.getElementById('UpdateButton').value)
+    displayPopup('update-popup')
 }
